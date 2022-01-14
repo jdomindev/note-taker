@@ -2,7 +2,7 @@
 ## Description
 - This project was application called Note Taker that can be used to write and save notes. 
 - This app uses an Express.js back end that saves and retrieves data to a JSON file.
-- While building this app I have gained experience with routing, modularization, and the crud operations through express js. 
+- While building this app I have gained experience with routing, modularization, and the crud operations through express.js. 
 - This app has also introduced me to deploying on Heroku.
 ## Table of Contents
 - [Installation](#installation)
@@ -14,13 +14,13 @@
 - N/A
 ## Usage
 - Github Repo: https://github.com/jdomindev/note-taker
-- Heroku Deployed Link: https://thawing-brook-85676.herokuapp.com/
+- Heroku Deployed Link: https://thawing-brook-85676.herokuapp.com
 - Screenshots:
-    ![Prompt](./images/screenshot-prompts.png)
-    ![ReadMe1](./images/screenshot-readme-demo1.png)
-    ![ReadMe2](./images/screenshot-readme-demo2.png)
+    ![Index](./images/screenshot-index.png)
+    ![Notes](./images/screenshot-notes.png)
 - Video:
-    ![Demo-gif](./images/demo-video.gif)
+    - [Demo Video](https://drive.google.com/file/d/1GE8nE3YflPuixsFN2qEAmnUPrQysN_dv/view?usp=sharing)
+    ![Demo-gif](./images/NT-demo-video.gif)
 ## Credits
 - N/A
 ## License
