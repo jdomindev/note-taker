@@ -7,7 +7,7 @@ const router = express.Router();
 
 // GET request to show note in left column
 router.get("/", (req, res) => {
-     res.status(201).json(db);
+     res.status(200).json(db);
 })
 
 // POST request to save a note
@@ -22,7 +22,9 @@ router.post("/", (req, res) => {
 
     // Write the string to a file
     fs.readFile(`./db/db.json`, "utf8", (err, data) => {
+        
         const notes = JSON.parse(data);
+        console.log(notes);
         notes.push(newNote);
         (err) => console.error(err)
       fs.writeFile(`./db/db.json`, JSON.stringify(notes, null, 4), (err) =>
@@ -46,44 +48,51 @@ router.post("/", (req, res) => {
   }
 });
 
-router.get("/:noteId", (req, res) => {
-    if (req.params.noteId) {
-        console.info(`${req.method} request received to get a single note`);
-        const noteId = req.params.noteId;
+// router.get("/:noteId", (req, res) => {
+//     if (req.params.noteId) {
+//         console.info(`${req.method} request received to get a single note`);
+//         const noteId = req.params.noteId;
+//         for (let i = 0; i < db.length; i++) {
+//           const currentNote = db[i];
+//           if (currentNote.noteId === noteId) {
+//             res.status(200).json(currentNote);
+//             return;
+//           }
+//         }
+//         res.status(404).send('Note not found');
+//       } else {
+//         res.status(400).send('Note ID not provided');
+//       }
+//   })
+
+
+router.delete("/:id", (req, res) => {
+    if (req.params.id) {
+        console.log(req.params.id);
+        console.info(`${req.method} request received to delete a single note`);
+        const noteId = req.params.id;
         for (let i = 0; i < db.length; i++) {
           const currentNote = db[i];
-          if (currentNote.noteId === noteId) {
-            res.status(200).json(currentNote);
-            return;
+          if (currentNote.id === noteId) {
+            // res.status(200).json(currentNote);
+            fs.readFile(`./db/db.json`, "utf8", (err, data) => {
+                const notes = JSON.parse(data);
+                Object.values(notes).filter(currentNote);
+                (err) => console.error(err)
+              fs.writeFile(`./db/db.json`, JSON.stringify(notes, null, 4), (err) =>
+                err
+                  ? console.error(err)
+                  : console.log(
+                      `Note titled ${currentNote.title} has been deleted from JSON file`
+                    )
+              );
+            });
           }
         }
         res.status(404).send('Note not found');
       } else {
         res.status(400).send('Note ID not provided');
       }
-  })
-
-
-router.delete("/:noteId", (req, res) => {
-    if (req.params.noteId) {
-        // console.info(`${req.method} request received to get a single a review`);
-        const noteId = req.params.noteId;
-        for (let i = 0; i < db.length; i++) {
-          const currentNote = db[i];
-          console.log(db[i]);
-          db.filter(note => note.noteId === noteId)
-        //   if (currentNote.noteId === noteId) {
-        //     // fs.readFile(`./db/db.json`, "utf8", (err, data) => {
-        //     // const notes = JSON.parse(data);
-        //     // console.log(notes);
-            fs.writeFileSync('./db/db.json', JSON.stringify(db, null, 4))
-        //     // })
-        //     }
-        }  
-        res.status(404).send('Review not found');
-    } else {
-        res.status(400).send('Review ID not provided');
-    }
 })
 
 module.exports = router;
