@@ -14,7 +14,7 @@
 - N/A
 ## Usage
 - Github Repo: https://github.com/jdomindev/note-taker
-- Heroku Deployed Link: 
+- Heroku Deployed Link: https://thawing-brook-85676.herokuapp.com/
 - Screenshots:
     ![Prompt](./images/screenshot-prompts.png)
     ![ReadMe1](./images/screenshot-readme-demo1.png)
